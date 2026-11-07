@@ -10,6 +10,8 @@ async function bootstrap() {
       'http://192.168.0.64:5173',
       'http://localhost:5173',
     ],
+    methods: ['GET', 'POST', 'PUT', ' PATCH', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   })
   await app.listen(process.env.PORT ?? 3000, '0.0.0.0');
 }
