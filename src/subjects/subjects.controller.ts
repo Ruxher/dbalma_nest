@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, HttpCode, HttpStatus, Param, Post } from "@nestjs/common";
 import { SubjectService } from "./subjects.service.js";
 import { CreateSubjectDto } from "./dto/create_subjects.dto.js";
 
@@ -14,5 +14,11 @@ export class SubjectsController {
     @Get()
     findAll() {
         return this.subjectsService.findAll()
+    }
+
+    @Delete('/:id')
+    @HttpCode(HttpStatus.NO_CONTENT) 
+    remove(@Param('id') id: string) {
+        return this.subjectsService.remove(+id)
     }
 }
